@@ -1,16 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { getAlbuns } from "../../services";
+import { IFeed } from "../../Types";
 import "./styles.scss";
 
 const Home: FC = () => {
-  const [albums, setAlbums] = useState<any[]>([]);
+  const [albums, setAlbums] = useState<IFeed>();
 
   useEffect(() => {
-    getAlbuns().then((albumsData) => {
+    getAlbuns().then((albumsData: IFeed) => {
       setAlbums(albumsData);
-    });
 
-    console.log(albums);
+      console.log(albumsData.entry[0].category.attributes["im:id"]);
+    });
   }, []);
 
   return (
