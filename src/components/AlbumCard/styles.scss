@@ -40,21 +40,28 @@
       display: flex;
       justify-content: flex-end;
       padding: 0.5rem 0.5rem 0;
-      svg {
-      }
     }
     .info__name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
       p {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
       }
       span {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
       }
     }
 
     .info__price {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 0.5rem 0.5rem;
       span {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
+        font-weight: 300;
       }
     }
   }

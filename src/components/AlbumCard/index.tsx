@@ -18,7 +18,7 @@ const AlbumCard: FC<IProps> = (props) => {
     <button
       className="album-card"
       onClick={() =>
-        history.push(`/album-detail/${album["im:name"].label.toLowerCase()}`)
+        history.push(`/album-detail/${album.id.attributes["im:id"]}`)
       }
     >
       <figure className="album-card__image">

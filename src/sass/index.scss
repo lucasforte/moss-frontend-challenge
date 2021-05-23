@@ -12,6 +12,11 @@
   padding: 0;
 }
 
+ul,
+li {
+  list-style: none;
+}
+
 h1,
 h2,
 h3,
@@ -25,4 +30,13 @@ button,
 a,
 li {
   font-family: "Lato", sans-serif;
+}
+
+@keyframes hueRotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
 }

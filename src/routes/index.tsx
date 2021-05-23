@@ -30,7 +30,7 @@ const Routes = observer(() => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/favorites" exact component={Favorites} />
-          <Route path="/album-detail/:album" exact component={AlbumDetail} />
+          <Route path="/album-detail/:album_id" exact component={AlbumDetail} />
         </Switch>
       </PageContainer>
     </Router>
