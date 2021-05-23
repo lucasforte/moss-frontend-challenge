@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { HeartTwoTone } from "@ant-design/icons";
 import { IAlbum } from "../../Types";
 
 import "./styles.scss";
+import FavoriteButton from "../FavoriteButton";
 
 interface IProps {
   album: IAlbum;
@@ -30,7 +30,7 @@ const AlbumCard: FC<IProps> = (props) => {
       </figure>
       <div className="album-card__info">
         <div className="info__favorite">
-          <HeartTwoTone />
+          <FavoriteButton album={album} />
         </div>
         <div className="info__name">
           <p>{album["im:name"].label}</p>

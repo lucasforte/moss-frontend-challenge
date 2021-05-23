@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IFeed, MediaType } from "../Types";
+import { IFeed, IMedia, MediaType } from "../Types";
 
 export default class Services {
   static getAlbuns = async (): Promise<IFeed> => {
@@ -18,7 +18,7 @@ export default class Services {
   static getSearchResults = async (
     term: string,
     mediaType: MediaType
-  ): Promise<any> => {
+  ): Promise<IMedia[]> => {
     try {
       const response = await axios.post(
         `https://itunes.apple.com/search?term=${term}&media=${mediaType}`

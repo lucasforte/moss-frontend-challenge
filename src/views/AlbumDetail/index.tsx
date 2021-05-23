@@ -69,7 +69,7 @@ const AlbumDetail = observer(() => {
           </LazyLoadComponent>
           <div className="album-detail__title">
             <h1>{album?.["im:name"].label}</h1>
-            <FavoriteButton />
+            <FavoriteButton album={album} />
           </div>
           <div className="album-detail__info">
             <ul>

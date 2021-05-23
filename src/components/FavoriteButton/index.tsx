@@ -1,13 +1,38 @@
-import React, { FC } from "react";
-import { HeartTwoTone } from "@ant-design/icons";
+import React, { FC, useContext } from "react";
+import { observer } from "mobx-react";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { GeneralStoreContext } from "../../store";
+import { IAlbum } from "../../Types";
 import "./styles.scss";
 
-const FavoriteButton: FC = () => {
+interface IProps {
+  album?: IAlbum;
+}
+
+const FavoriteButton: FC<IProps> = observer((props) => {
+  const { album } = props;
+  const generalStore = useContext(GeneralStoreContext);
+
+  const { favoriteAlbums, setFavoriteAlbums } = generalStore;
+
+  const favFilter = favoriteAlbums.filter(
+    (fav) => fav.id.label === album?.id.label
+  );
+
+  const isFav = favFilter && favFilter.length > 0 ? true : false;
+
   return (
-    <button>
-      <HeartTwoTone twoToneColor={`#bbb`} />
+    <button
+      className="favorite-button"
+      onClick={() => setFavoriteAlbums(album)}
+    >
+      {isFav ? (
+        <HeartFilled className="favorite-button__svg--active" />
+      ) : (
+        <HeartOutlined className="favorite-button__svg" />
+      )}
     </button>
   );
-};
+});
 
 export default FavoriteButton;
