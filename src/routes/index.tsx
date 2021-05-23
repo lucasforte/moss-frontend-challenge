@@ -4,7 +4,6 @@ import { observer } from "mobx-react";
 import { GeneralStoreContext } from "../store";
 
 import Home from "../views/Home";
-import Favorites from "../views/Favorites";
 import AlbumDetail from "../views/AlbumDetail";
 import PageContainer from "../components/PageContainer";
 import Services from "../services";
@@ -41,7 +40,6 @@ const Routes = observer(() => {
       <PageContainer>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/favorites" exact component={Favorites} />
           <Route path="/album-detail/:album_id" exact component={AlbumDetail} />
         </Switch>
       </PageContainer>

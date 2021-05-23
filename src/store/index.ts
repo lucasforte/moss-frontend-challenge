@@ -4,6 +4,7 @@ import { IAlbum } from "../Types";
 
 class GeneralStore {
   theme = "light";
+  onlyFavorites = false;
   isLoading = true;
   albumsData: IAlbum[] = [];
   favoriteAlbums: IAlbum[] = [];
@@ -15,6 +16,10 @@ class GeneralStore {
 
   setTheme = (theme: string) => {
     this.theme = theme;
+  };
+
+  setOnlyFavorites = (onlyFavorite: boolean) => {
+    this.onlyFavorites = onlyFavorite;
   };
 
   setIsLoading = (isLoading: boolean) => {

@@ -6,7 +6,27 @@
   gap: 1.5rem;
   padding: 2rem 1rem 1rem;
 
-  .home-view__title {
+  .home-view__search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .show-only-favorites {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+      button {
+        border: none;
+        background: none;
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      svg {
+        color: red;
+      }
+    }
   }
 
   .home-view__albums-list {
