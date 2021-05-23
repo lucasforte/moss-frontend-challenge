@@ -1,9 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { HeartTwoTone } from "@ant-design/icons";
-import { FC } from "react";
-import "./styles.scss";
 import { IAlbum } from "../../Types";
+
+import "./styles.scss";
 
 interface IProps {
   album: IAlbum;
@@ -21,9 +22,10 @@ const AlbumCard: FC<IProps> = (props) => {
       }
     >
       <figure className="album-card__image">
-        <img
-          src={album["im:image"][2].label}
+        <LazyLoadImage
           alt={`${album["im:name"].label} cover`}
+          effect="blur"
+          src={album["im:image"][2].label}
         />
       </figure>
       <div className="album-card__info">

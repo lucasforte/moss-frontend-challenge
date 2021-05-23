@@ -6,18 +6,18 @@ import { GeneralStoreContext } from "../../store";
 import AlbumCard from "../../components/AlbumCard";
 
 import "./styles.scss";
+import SearchInput from "../../components/SearchInput";
 
 const Home: FC = observer(() => {
   const generalStore = useContext(GeneralStoreContext);
-
-  const { albumsData } = generalStore;
-  const { isLoading } = generalStore;
-  const { searchValue, setSearchValue } = generalStore;
+  const { albumsData, isLoading, searchValue } = generalStore;
 
   const albumsFilter = albumsData?.filter(
     (album) =>
-      album["im:artist"].label.toLowerCase().includes(searchValue) ||
-      album["im:name"].label.toLowerCase().includes(searchValue)
+      album["im:artist"].label
+        .toLowerCase()
+        .includes(searchValue.toLowerCase()) ||
+      album["im:name"].label.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   const renderAlbuns = () => {
@@ -33,13 +33,12 @@ const Home: FC = observer(() => {
 
   return (
     <div className="home-view">
-      <h1>Hello World</h1>
-      <input
-        type="text"
-        placeholder="Search by artist or album"
-        value={searchValue}
-        onChange={({ target: { value } }) => setSearchValue(value)}
-      />
+      <div className="home-view__title">
+        <h1>Hello World</h1>
+      </div>
+      <div className="home-view__search-input">
+        <SearchInput />
+      </div>
 
       <div className="home-view__albums-list">{renderAlbuns()}</div>
 
