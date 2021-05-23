@@ -8,6 +8,7 @@
   .anticon.anticon-loading.anticon-spin {
     position: fixed;
     top: 40%;
+    right: 50%;
     svg {
       width: 60px;
       height: 60px;
@@ -80,6 +81,7 @@
   }
 
   .album-detail__media {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

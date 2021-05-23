@@ -28,23 +28,38 @@ const AlbumDetail = observer(() => {
   useEffect(() => {
     setIsLoading(true);
     if (albumsData && albumsData.length > 0) {
-      const albumData = albumsData.filter(
+      const albumsFilter = albumsData.filter(
         (alb) => alb.id.attributes["im:id"] === album_id
       );
-      setAlbum(albumData[0]);
+      setAlbum(albumsFilter[0]);
 
-      Services.getSearchResults(
-        albumsData[0].title.label,
-        MediaType.music
-      ).then((mediaData) => {
-        if (mediaData) {
-          setMedia(mediaData);
-        }
-      });
+      Services.getSearchResults(albumsFilter[0].title.label, MediaType.music)
+        .then((mediaData) => {
+          if (mediaData) {
+            setMedia(mediaData);
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
-
-    setIsLoading(false);
   }, [album_id, albumsData, setIsLoading]);
+
+  const renderMusicCards = () => {
+    if (isLoading) {
+      return <LoadingOutlined />;
+    } else if (media && media.length > 0) {
+      return media?.map((mediaData) => {
+        return (
+          <AudioPreviewCard
+            key={mediaData.artistId}
+            previewUrl={mediaData.previewUrl}
+            trackName={mediaData.trackName}
+          />
+        );
+      });
+    } else {
+      return <p>Sorry, we couldn`t find anything related :( </p>;
+    }
+  };
 
   return (
     <div className="album-detail">
@@ -105,17 +120,7 @@ const AlbumDetail = observer(() => {
             <p>
               More of <span>{album?.title.label}</span> on ITunes
             </p>
-            <div className="media__list">
-              {media?.map((mediaData) => {
-                return (
-                  <AudioPreviewCard
-                    key={mediaData.artistId}
-                    previewUrl={mediaData.previewUrl}
-                    trackName={mediaData.trackName}
-                  />
-                );
-              })}
-            </div>
+            <div className="media__list">{renderMusicCards()}</div>
           </div>
         </>
       )}
