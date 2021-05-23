@@ -1,11 +1,28 @@
 :root {
   --light-mode-bg-color: #e5e5e5;
+  --light-mode-bg-color-2: #fff;
   --light-mode-font-color: #232323;
   --dark-mode-bg-color: #545d68;
+  --dark-mode-bg-color-2: #858f9e;
   --dark-mode-font-color: #fff;
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Righteous", cursive;
+}
+
+p,
+span,
+button,
+a,
+li {
+  font-family: "Lato", sans-serif;
 }

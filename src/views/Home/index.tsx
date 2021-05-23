@@ -1,13 +1,13 @@
-import { FC, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { FC, useContext } from "react";
 import { observer } from "mobx-react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { GeneralStoreContext } from "../../store";
 
+import AlbumCard from "../../components/AlbumCard";
+
 import "./styles.scss";
 
 const Home: FC = observer(() => {
-  const history = useHistory();
   const generalStore = useContext(GeneralStoreContext);
 
   const { albumsData } = generalStore;
@@ -25,24 +25,14 @@ const Home: FC = observer(() => {
       return <LoadingOutlined />;
     } else if (albumsFilter && albumsFilter.length > 0) {
       return albumsFilter.map((album) => {
-        return (
-          <p
-            onClick={() =>
-              history.push(
-                `/album-detail/${album["im:name"].label.toLowerCase()}`
-              )
-            }
-          >
-            {album["im:name"].label}
-          </p>
-        );
+        return <AlbumCard key={album.id.label} album={album} />;
       });
     }
     return <p>Ops! There is no such artist or album in this list</p>;
   };
 
   return (
-    <div>
+    <div className="home-view">
       <h1>Hello World</h1>
       <input
         type="text"
@@ -51,7 +41,7 @@ const Home: FC = observer(() => {
         onChange={({ target: { value } }) => setSearchValue(value)}
       />
 
-      <div>{renderAlbuns()}</div>
+      <div className="home-view__albums-list">{renderAlbuns()}</div>
 
       <audio
         src={

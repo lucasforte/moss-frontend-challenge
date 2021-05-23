@@ -20,7 +20,7 @@ const Routes = observer(() => {
             generalStore.setAlbums(feed.entry);
           }
         })
-        .finally(() => generalStore.setIsLoading(true));
+        .finally(() => generalStore.setIsLoading(false));
     }
   }, [generalStore]);
 
