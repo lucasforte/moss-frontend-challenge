@@ -69,9 +69,9 @@ const Home: FC = observer(() => {
         <SearchInput />
         <div className="show-only-favorites">
           <button onClick={() => setOnlyFavorites(!onlyFavorites)}>
-            Show Favorites
+            {onlyFavorites ? "Back to general list" : "Show Favorites"}
           </button>
-          <HeartFilled />
+          {!onlyFavorites && <HeartFilled />}
         </div>
       </div>
       <div className="home-view__albums-list">

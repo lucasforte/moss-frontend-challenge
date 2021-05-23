@@ -15,12 +15,7 @@ const AlbumCard: FC<IProps> = (props) => {
   const history = useHistory();
 
   return (
-    <button
-      className="album-card"
-      onClick={() =>
-        history.push(`/album-detail/${album.id.attributes["im:id"]}`)
-      }
-    >
+    <div className="album-card">
       <figure className="album-card__image">
         <LazyLoadImage
           alt={`${album["im:name"].label} cover`}
@@ -37,10 +32,17 @@ const AlbumCard: FC<IProps> = (props) => {
           <span>{album["im:artist"].label}</span>
         </div>
         <div className="info__price">
+          <button
+            onClick={() =>
+              history.push(`/album-detail/${album.id.attributes["im:id"]}`)
+            }
+          >
+            Show details
+          </button>
           <span>{album["im:price"].label}</span>
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 
