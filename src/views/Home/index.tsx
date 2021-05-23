@@ -40,12 +40,6 @@ const Home: FC = observer(() => {
         <SearchInput />
       </div>
       <div className="home-view__albums-list">{renderAlbuns()}</div>
-      <audio
-        src={
-          "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/bb/e0/85/bbe08553-751a-4cdf-64a6-f2bd76f9d065/mzaf_4863408292296822173.plus.aac.p.m4a"
-        }
-        controls
-      ></audio>
     </div>
   );
 });

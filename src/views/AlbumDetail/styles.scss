@@ -78,4 +78,28 @@
       }
     }
   }
+
+  .album-detail__media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    p {
+      font-size: 1.2rem;
+      span {
+        padding: 0 0.2rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+    }
+
+    .media__list {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
 }

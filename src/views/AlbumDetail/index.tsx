@@ -5,10 +5,12 @@ import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { LoadingOutlined } from "@ant-design/icons";
 import { FiChevronLeft } from "react-icons/fi";
 import { GeneralStoreContext } from "../../store";
-import { IAlbum } from "../../Types";
+import { IAlbum, IMedia, MediaType } from "../../Types";
 import FavoriteButton from "../../components/FavoriteButton";
 
 import "./styles.scss";
+import Services from "../../services";
+import AudioPreviewCard from "../../components/AudioPreviewCard";
 
 interface IUrlParams {
   album_id: string;
@@ -21,6 +23,7 @@ const AlbumDetail = observer(() => {
   const { albumsData, isLoading, setIsLoading } = generalStore;
 
   const [album, setAlbum] = useState<IAlbum>();
+  const [media, setMedia] = useState<IMedia[]>();
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,6 +32,15 @@ const AlbumDetail = observer(() => {
         (alb) => alb.id.attributes["im:id"] === album_id
       );
       setAlbum(albumData[0]);
+
+      Services.getSearchResults(
+        albumsData[0].title.label,
+        MediaType.music
+      ).then((mediaData) => {
+        if (mediaData) {
+          setMedia(mediaData);
+        }
+      });
     }
 
     setIsLoading(false);
@@ -88,6 +100,22 @@ const AlbumDetail = observer(() => {
                 </a>
               </li>
             </ul>
+          </div>
+          <div className="album-detail__media">
+            <p>
+              More of <span>{album?.title.label}</span> on ITunes
+            </p>
+            <div className="media__list">
+              {media?.map((mediaData) => {
+                return (
+                  <AudioPreviewCard
+                    key={mediaData.artistId}
+                    previewUrl={mediaData.previewUrl}
+                    trackName={mediaData.trackName}
+                  />
+                );
+              })}
+            </div>
           </div>
         </>
       )}
