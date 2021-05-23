@@ -1,33 +1,35 @@
-import { FC, useEffect, useState } from "react";
-import Services from "../../services";
-import { IAlbum, IFeed, MediaType } from "../../Types";
+import { FC, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { observer } from "mobx-react";
+import { LoadingOutlined } from "@ant-design/icons";
+import { GeneralStoreContext } from "../../store";
 
 import "./styles.scss";
 
-const Home: FC = () => {
-  const [albums, setAlbums] = useState<IAlbum[]>();
-  const [searchInput, setSearchInput] = useState("");
-  useEffect(() => {
-    Services.getAlbuns().then((feedData: IFeed) => {
-      setAlbums(feedData.entry);
-    });
-  }, []);
+const Home: FC = observer(() => {
+  const history = useHistory();
+  const generalStore = useContext(GeneralStoreContext);
 
-  const albumsFilter = albums?.filter(
+  const { albumsData } = generalStore;
+  const { isLoading } = generalStore;
+  const { searchValue, setSearchValue } = generalStore;
+
+  const albumsFilter = albumsData?.filter(
     (album) =>
-      album["im:artist"].label.toLowerCase().includes(searchInput) ||
-      album["im:name"].label.toLowerCase().includes(searchInput)
+      album["im:artist"].label.toLowerCase().includes(searchValue) ||
+      album["im:name"].label.toLowerCase().includes(searchValue)
   );
 
   const renderAlbuns = () => {
-    if (albumsFilter && albumsFilter.length > 0) {
+    if (isLoading) {
+      return <LoadingOutlined />;
+    } else if (albumsFilter && albumsFilter.length > 0) {
       return albumsFilter.map((album) => {
         return (
           <p
             onClick={() =>
-              Services.getSearchResults(
-                album.title.label.toLowerCase(),
-                MediaType.music
+              history.push(
+                `/album-detail/${album["im:name"].label.toLowerCase()}`
               )
             }
           >
@@ -36,6 +38,7 @@ const Home: FC = () => {
         );
       });
     }
+    return <p>Ops! There is no such artist or album in this list</p>;
   };
 
   return (
@@ -44,8 +47,8 @@ const Home: FC = () => {
       <input
         type="text"
         placeholder="Search by artist or album"
-        value={searchInput}
-        onChange={({ target: { value } }) => setSearchInput(value)}
+        value={searchValue}
+        onChange={({ target: { value } }) => setSearchValue(value)}
       />
 
       <div>{renderAlbuns()}</div>
@@ -58,6 +61,6 @@ const Home: FC = () => {
       ></audio>
     </div>
   );
-};
+});
 
 export default Home;
