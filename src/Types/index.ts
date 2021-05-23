@@ -36,5 +36,3 @@ export interface IAlbum {
   rights: { label: string };
   title: { label: string };
 }
-
-export interface IAlbumCategory {}
