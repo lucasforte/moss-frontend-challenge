@@ -36,7 +36,7 @@ const Routes = observer(() => {
   }, [albumsData, setAlbums, setIsLoading, setInitialFavorites, localFavs]);
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <PageContainer>
         <Switch>
           <Route path="/" exact component={Home} />

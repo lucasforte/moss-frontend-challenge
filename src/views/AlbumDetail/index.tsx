@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { observer } from "mobx-react";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
@@ -16,7 +16,7 @@ interface IUrlParams {
   album_id: string;
 }
 
-const AlbumDetail = observer(() => {
+const AlbumDetail: FC = observer(() => {
   const { album_id } = useParams<IUrlParams>();
   const history = useHistory();
   const generalStore = useContext(GeneralStoreContext);
