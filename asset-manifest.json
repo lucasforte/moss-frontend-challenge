@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/moss-frontend-challenge/static/css/main.565c0d3a.chunk.css",
+    "main.js": "/moss-frontend-challenge/static/js/main.a2d986e9.chunk.js",
+    "main.js.map": "/moss-frontend-challenge/static/js/main.a2d986e9.chunk.js.map",
+    "runtime-main.js": "/moss-frontend-challenge/static/js/runtime-main.37559e72.js",
+    "runtime-main.js.map": "/moss-frontend-challenge/static/js/runtime-main.37559e72.js.map",
+    "static/js/2.7924663c.chunk.js": "/moss-frontend-challenge/static/js/2.7924663c.chunk.js",
+    "static/js/2.7924663c.chunk.js.map": "/moss-frontend-challenge/static/js/2.7924663c.chunk.js.map",
+    "index.html": "/moss-frontend-challenge/index.html",
+    "static/css/main.565c0d3a.chunk.css.map": "/moss-frontend-challenge/static/css/main.565c0d3a.chunk.css.map",
+    "static/js/2.7924663c.chunk.js.LICENSE.txt": "/moss-frontend-challenge/static/js/2.7924663c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.37559e72.js",
+    "static/js/2.7924663c.chunk.js",
+    "static/css/main.565c0d3a.chunk.css",
+    "static/js/main.a2d986e9.chunk.js"
+  ]
+}
