@@ -1,26 +1,8 @@
-@keyframes shake {
-  0% {
-    transform: rotate(0);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
 .favorite-button {
   border: none;
   background: none;
   &:hover {
-    animation: shake 0.5s infinite;
+    animation: shake 0.3s normal;
   }
 
   svg {
