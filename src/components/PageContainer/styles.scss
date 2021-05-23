@@ -1,0 +1,32 @@
+.page-container {
+  min-height: 100vh;
+  &.page-container--light {
+    background-color: var(--light-mode-bg-color);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    li,
+    a,
+    button,
+    svg {
+      color: var(--light-mode-font-color);
+    }
+  }
+
+  &.page-container--dark {
+    background-color: var(--dark-mode-bg-color);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    li,
+    a,
+    button,
+    svg {
+      color: var(--dark-mode-font-color);
+    }
+  }
+}
