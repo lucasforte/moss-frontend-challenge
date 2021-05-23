@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/moss-frontend-challenge/static/css/main.565c0d3a.chunk.css",
-    "main.js": "/moss-frontend-challenge/static/js/main.8812ad7c.chunk.js",
-    "main.js.map": "/moss-frontend-challenge/static/js/main.8812ad7c.chunk.js.map",
+    "main.js": "/moss-frontend-challenge/static/js/main.fa41d21f.chunk.js",
+    "main.js.map": "/moss-frontend-challenge/static/js/main.fa41d21f.chunk.js.map",
     "runtime-main.js": "/moss-frontend-challenge/static/js/runtime-main.37559e72.js",
     "runtime-main.js.map": "/moss-frontend-challenge/static/js/runtime-main.37559e72.js.map",
     "static/js/2.7924663c.chunk.js": "/moss-frontend-challenge/static/js/2.7924663c.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.37559e72.js",
     "static/js/2.7924663c.chunk.js",
     "static/css/main.565c0d3a.chunk.css",
-    "static/js/main.8812ad7c.chunk.js"
+    "static/js/main.fa41d21f.chunk.js"
   ]
 }
