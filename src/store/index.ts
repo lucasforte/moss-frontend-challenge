@@ -25,6 +25,12 @@ class GeneralStore {
     this.albumsData = albums;
   };
 
+  setInitialFavorites = (albums: IAlbum[]) => {
+    if (albums) {
+      this.favoriteAlbums = albums;
+    }
+  };
+
   setFavoriteAlbums = (album?: IAlbum) => {
     if (album) {
       const favoritesFilter = this.favoriteAlbums.filter(
@@ -41,6 +47,11 @@ class GeneralStore {
       } else {
         currFav.push(album);
         this.favoriteAlbums = currFav;
+
+        localStorage.setItem(
+          "@myfav:albums",
+          JSON.stringify(this.favoriteAlbums)
+        );
       }
     }
   };

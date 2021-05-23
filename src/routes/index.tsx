@@ -8,21 +8,33 @@ import Favorites from "../views/Favorites";
 import AlbumDetail from "../views/AlbumDetail";
 import PageContainer from "../components/PageContainer";
 import Services from "../services";
+import { IAlbum } from "../Types";
 
 const Routes = observer(() => {
   const generalStore = useContext(GeneralStoreContext);
+  const { albumsData, setAlbums, setIsLoading, setInitialFavorites } =
+    generalStore;
+
+  const localFavs = localStorage.getItem("@myfav:albums");
 
   useEffect(() => {
-    if (!generalStore.albumsData || generalStore.albumsData.length < 1) {
+    if (!albumsData || albumsData.length < 1) {
       Services.getAlbuns()
         .then((feed) => {
           if (feed) {
-            generalStore.setAlbums(feed.entry);
+            setAlbums(feed.entry);
           }
         })
-        .finally(() => generalStore.setIsLoading(false));
+        .finally(() => setIsLoading(false));
     }
-  }, [generalStore]);
+
+    if (localFavs) {
+      const favs: IAlbum[] = JSON.parse(localFavs);
+      if (favs.length > 0) {
+        setInitialFavorites(favs);
+      }
+    }
+  }, [albumsData, setAlbums, setIsLoading, setInitialFavorites, localFavs]);
 
   return (
     <Router>
